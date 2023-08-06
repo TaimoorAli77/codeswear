@@ -24,7 +24,7 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subtotal }) => {
   return (
     <div className=' flex flex-col md:flex-row md:justify-start items-center justify-between py-2 shadow-xl'>
       <div className="logo  mx-5">
-        <Link href={'/'}><Image src='/logo.png' alt='missing' height={300} width={140}></Image> </Link>
+        <Link href={'/'}><img src='/logo.png' alt='missing' height={300} width={140} /> </Link>
       </div>
       <div className="nav  ">
         <ul className='flex space-x-5 items-center font-bold md:text-l'>
@@ -48,11 +48,10 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subtotal }) => {
 
 
 
-         {Object.keys(cart).map((item)=> {
-         return <li key={item}>
+         {Object.keys(cart).map((k)=> { return <li key={k}>{console.log(k)}
             <div className='item flex my-3'>
               <div className='w-2/3 '>{cart[k].name}</div>
-              <div className='w-1/3  flex items-center justify-center text-lg' ><AiFillMinusCircle className=' text-pink-500 curser-pointer text-sm ' /> {cart[k].qty} <span className='mx-2 text-sm'> 1 </span><AiFillPlusCircle className=' text-pink-500 curser-pointer text-sm' /></div>
+              <div className='w-1/3  flex items-center justify-center text-lg' ><AiFillMinusCircle onClick ={()=>{removeFromCart(k, 1 , cart[k].price , cart[k].name , cart[k].size ,cart[k].variant)}}  className=' text-pink-500 curser-pointer text-sm ' /> <span className='mx-2 text-sm'>  {cart[k].qty} </span><AiFillPlusCircle onClick={()=>{addToCart(k,1,cart[k].price , cart[k].name , cart[k].size , cart[k].variant)}} className=' text-pink-500 curser-pointer text-sm' /></div>
             </div>
           </li>})}
 
