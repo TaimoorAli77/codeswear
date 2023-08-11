@@ -7,6 +7,7 @@ const Post = ({ addToCart }) => {
   const { slug } = router.query;
   const [pin, setPin] = useState();
   const [service, setService] = useState()
+  
   const checkServiceAbility = async () => {
     let pins = await fetch('http://localhost:3000/api/pincode')
     let pinJson = await pins.json()
